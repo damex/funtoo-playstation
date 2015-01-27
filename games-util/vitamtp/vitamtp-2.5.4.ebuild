@@ -13,14 +13,31 @@ RESTRICT="mirror"
 SLOT="0"
 LICENSE="GPL3"
 KEYWORDS="*"
-IUSE="rpath +usb +wireless"
+IUSE="+udev +usb +wireless
+	doc rpath"
+
+RDEPEND="doc? ( app-doc/doxygen )
+	udev? ( virtual/udev )"
+
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable rpath) \
+	econf --disable-static \
+		$(use_enable doc doxygen) \
+		$(use_enable rpath) \
 		$(use_enable usb usb-support) \
 		$(use_enable wireless wireless-support)
+}
+
+src_install() {
+	emake DESTDIR="${D}" install
+
+	if use udev ; then
+		insinto "${EROOT}/etc/udev/rules.d"
+		newins "${S}/debian/${PN}4.udev" "50-${PN}.udev"
+	fi
 }
