@@ -6,7 +6,7 @@ PLOCALES="es ja"
 
 PLOCALE_BACKUP=""
 
-inherit eutils l10n qmake-utils
+inherit l10n qmake-utils
 
 DESCRIPTION="Cross-platform content manager assistant for the PS Vita"
 HOMEPAGE="https://github.com/codestation/qcma"
@@ -45,28 +45,25 @@ locale_info_cleanup() {
 src_prepare() {
 	l10n_for_each_disabled_locale_do locale_info_cleanup
 
-	if ! use_if_iuse kde ; then
+	if ! use kde ; then
 		sed -e "s;ENABLE_KDENOTIFIER;DISABLE_KDENOTIFIER;" \
 			-i "${S}/${PN}.pro" || die
 	fi
 
-	if ! use_if_iuse unity ; then
+	if ! use unity ; then
 		sed -e "s;ENABLE_APPINDICATOR;DISABLE_APPINDICATOR;" \
 			-i "${S}/${PN}.pro" || die
 	fi
 
 	if [[ $(l10n_get_locales) ]] ; then
-		lrelease -silent ${PN}.pro || die
+		lrelease -silent "${PN}.pro" || die
 	fi
 }
 
 src_compile() {
 	eqmake4
-	if use qt4 ; then
-		emake -j1
-	else
-		emake -j1 sub-qcma_cli-pro
-	fi
+	emake -j1 sub-qcma_cli-pro
+	use qt4 && emake -j1 sub-qcma_gui-pro
 }
 
 src_install() {
