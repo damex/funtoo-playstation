@@ -18,7 +18,7 @@ SLOT="0"
 LICENSE="GPL3"
 KEYWORDS="*"
 IUSE="+qt4
-	kde libnotify unity"
+	kde unity"
 
 REQUIRED_USE="kde? ( qt4 )
 	unity? ( qt4 )"
@@ -27,8 +27,8 @@ RDEPEND="dev-qt/qtcore:4
 	games-util/vitamtp
 	sys-apps/dbus
 	virtual/ffmpeg
+	virtual/notification-daemon
 	kde? ( kde-base/knotify )
-	libnotify? ( virtual/notification-daemon )
 	qt4? ( dev-qt/qtdbus:4
 		dev-qt/qtgui:4 )
 	unity? ( dev-libs/libappindicator )"
@@ -63,7 +63,7 @@ src_prepare() {
 src_compile() {
 	eqmake4
 	if use qt4 ; then
-		emake -j1 sub-qcma_gui-pro
+		emake -j1
 	else
 		emake -j1 sub-qcma_cli-pro
 	fi
