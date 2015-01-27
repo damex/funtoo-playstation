@@ -20,6 +20,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin "${S}/psxtract"
+	dobin "${S}/${PN}"
 	dodoc ../README.md
 }

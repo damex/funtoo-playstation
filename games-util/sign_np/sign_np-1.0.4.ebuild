@@ -14,5 +14,5 @@ KEYWORDS="*"
 IUSE=""
 
 src_install() {
-	dobin "${S}/sign_np"
+	dobin "${S}/${PN}"
 }
