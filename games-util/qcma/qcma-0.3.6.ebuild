@@ -45,15 +45,8 @@ locale_info_cleanup() {
 src_prepare() {
 	l10n_for_each_disabled_locale_do locale_info_cleanup
 
-	if ! use kde ; then
-		sed -e "s;ENABLE_KDENOTIFIER;DISABLE_KDENOTIFIER;" \
-			-i "${S}/${PN}.pro" || die
-	fi
-
-	if ! use unity ; then
-		sed -e "s;ENABLE_APPINDICATOR;DISABLE_APPINDICATOR;" \
-			-i "${S}/${PN}.pro" || die
-	fi
+	use kde || sed -e "s;qcma_kdenotifier.pro;;" -i "${S}/${PN}.pro" || die
+	use unity || sed -e "s;qcma_appindicator.pro;;" -i "${S}/${PN}.pro" || die
 
 	if [[ $(l10n_get_locales) ]] ; then
 		lrelease -silent "${PN}.pro" || die
