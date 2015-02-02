@@ -9,7 +9,7 @@ SRC_URI="https://github.com/Hykem/sign_np/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror"
 
 SLOT="0"
-LICENSE="GPL3"
+LICENSE="GPL-3"
 KEYWORDS="*"
 IUSE=""
 
