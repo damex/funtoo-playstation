@@ -2,7 +2,7 @@
 
 EAPI="5"
 
-inherit autotools
+inherit autotools udev
 
 DESCRIPTION="Library to interact with Vita's USB MTP protocol"
 HOMEPAGE="https://github.com/codestation/vitamtp"
@@ -13,11 +13,11 @@ RESTRICT="mirror"
 SLOT="0"
 LICENSE="GPL3"
 KEYWORDS="*"
-IUSE="+udev +usb +wireless
+IUSE="+usb +wireless
 	doc rpath"
 
-RDEPEND="doc? ( app-doc/doxygen )
-	udev? ( virtual/udev )"
+RDEPEND="virtual/udev
+	doc? ( app-doc/doxygen )"
 
 DEPEND="${RDEPEND}"
 
@@ -35,9 +35,9 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+	udev_newrules "${S}/debian/${PN}4.udev" "50-${PN}.rules"
+}
 
-	if use udev ; then
-		insinto "${EROOT}/etc/udev/rules.d"
-		newins "${S}/debian/${PN}4.udev" "50-${PN}.udev"
-	fi
+pkg_postinst() {
+	udev_reload
 }
