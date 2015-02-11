@@ -53,8 +53,11 @@ src_prepare() {
 	fi
 }
 
-src_compile() {
+src_configure() {
 	eqmake4
+}
+
+src_compile() {
 	emake -j1 sub-qcma_cli-pro
 	use qt4 && emake -j1 sub-qcma_gui-pro
 }
