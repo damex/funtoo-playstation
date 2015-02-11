@@ -2,9 +2,12 @@
 
 EAPI="5"
 
+GITHUB_USERNAME="Hykem"
+GITHUB_REPOSITORY="psxtract"
+
 DESCRIPTION="Tool to decrypt and convert PSOne Classics from PSP/PS3"
-HOMEPAGE="https://github.com/Hykem/psxtract"
-SRC_URI="https://github.com/Hykem/psxtract/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}"
+SRC_URI="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 RESTRICT="mirror"
 
