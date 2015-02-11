@@ -22,6 +22,8 @@ RDEPEND="virtual/udev
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	sed -e '$a\' \
+		-i "${S}/debian/${PN}4.udev" || die
 	eautoreconf
 }
 
