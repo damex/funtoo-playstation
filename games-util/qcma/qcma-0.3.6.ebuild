@@ -24,14 +24,15 @@ REQUIRED_USE="kde? ( qt4 )
 	unity? ( qt4 )"
 
 RDEPEND="dev-qt/qtcore:4
-	games-util/vitamtp
 	sys-apps/dbus
 	virtual/ffmpeg
 	virtual/notification-daemon
 	kde? ( kde-base/knotify )
 	qt4? ( dev-qt/qtdbus:4
 		dev-qt/qtgui:4 )
-	unity? ( dev-libs/libappindicator )"
+	unity? ( dev-libs/libappindicator )
+	|| ( games-util/vitamtp
+		games-util/vitamtp-fork )"
 
 DEPEND="${RDEPEND}"
 
