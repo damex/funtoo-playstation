@@ -6,12 +6,9 @@ PYTHON_COMPAT=( python{2_7,3_3} )
 
 inherit distutils-r1 linux-info udev
 
-GITHUB_USERNAME="chrippa"
-GITHUB_REPOSITORY="ds4drv"
-
 DESCRIPTION="A Sony DualShock 4 userspace driver for Linux"
-HOMEPAGE="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}"
-SRC_URI="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/chrippa/ds4drv"
+SRC_URI="https://github.com/chrippa/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 RESTRICT="mirror"
 

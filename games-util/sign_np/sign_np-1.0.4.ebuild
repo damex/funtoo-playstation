@@ -2,12 +2,9 @@
 
 EAPI="5"
 
-GITHUB_USERNAME="Hykem"
-GITHUB_REPOSITORY="sign_np"
-
 DESCRIPTION="Tool to encrypt and sign PSP ISO images into PSN PBP files"
-HOMEPAGE="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}"
-SRC_URI="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/Hykem/sign_np"
+SRC_URI="https://github.com/Hykem/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 RESTRICT="mirror"
 

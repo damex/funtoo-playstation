@@ -4,17 +4,17 @@ EAPI="5"
 
 inherit autotools udev
 
-GITHUB_USERNAME="codestation"
-GITHUB_REPOSITORY="vitamtp"
+MY_PN="${PN/-vitamtp/}"
 
 DESCRIPTION="Library to interact with Vita's USB MTP protocol"
-HOMEPAGE="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}"
-SRC_URI="https://github.com/${GITHUB_USERNAME}/${GITHUB_REPOSITORY}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/codestation/vitamtp"
+SRC_URI="https://github.com/codestation/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 RESTRICT="mirror"
 
 SLOT="0"
-LICENSE="GPL3"
+
+LICENSE="GPL-3"
 KEYWORDS="*"
 IUSE="+usb +wireless
 	doc rpath"
@@ -24,9 +24,11 @@ RDEPEND="virtual/udev
 
 DEPEND="${RDEPEND}"
 
+S="${WORKDIR}/${MY_PN}-${PV}"
+
 src_prepare() {
 	sed -e '$a\' \
-		-i "${S}/debian/${PN}4.udev" || die
+		-i "${S}/debian/${MY_PN}4.udev" || die
 	eautoreconf
 }
 
@@ -40,7 +42,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	udev_newrules "${S}/debian/${PN}4.udev" "50-${PN}.rules"
+	udev_newrules "${S}/debian/${MY_PN}4.udev" "50-${PN}.rules"
 }
 
 pkg_postinst() {
