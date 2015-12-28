@@ -4,7 +4,7 @@ EAPI="5"
 
 inherit autotools udev
 
-MY_PN="${PN/-fork/}"
+MY_PN="${PN/lib/}"
 
 DESCRIPTION="Library to interact with Vita's USB MTP protocol"
 HOMEPAGE="https://github.com/codestation/vitamtp"

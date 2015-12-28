@@ -24,7 +24,7 @@ REQUIRED_USE="kde? ( qt4 )
 	unity? ( qt4 )"
 
 RDEPEND="dev-qt/qtcore:4
-	games-util/vitamtp-fork
+	games-util/libvitamtp
 	sys-apps/dbus
 	virtual/ffmpeg
 	virtual/notification-daemon
