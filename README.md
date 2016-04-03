@@ -1,7 +1,7 @@
 playstation-overlay
 =================
 
-The `funtoo-playstation` overlay is designed to be used with `Gentoo Linux`, however, ebuilds from this overlay can be used on any modern Gentoo Linux based derivative.
+The `playstation-overlay` overlay is designed to be used with `Gentoo Linux`, however, ebuilds from this overlay can be used on any modern Gentoo Linux based derivative.
 
 You can report bugs at:
 
